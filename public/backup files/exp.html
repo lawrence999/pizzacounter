@@ -1,0 +1,105 @@
+<html ng-app="nameApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+
+
+    <script>
+
+      var nameApp = angular.module('nameApp', []);//defining cantrroller this way avoids global scope problem
+      nameApp.controller('NameCtrl', function ($scope){
+
+        $scope.names = ['Larry', 'Curly', 'Moe'];
+        $scope.nicknames = ['puke', 'hash', 'bow'];
+        $scope.cntrys = [{"c_name":"india","popul":123456},
+                        {"c_name":"china","popul":1234569}];
+
+        $scope.addName1 = function() {
+          $scope.names.push($scope.enteredName);
+          $scope.enteredName="";
+        };
+
+        $scope.addName2 = function() {
+          $scope.nicknames.push($scope.nick);
+          $scope.nick="";
+        };
+
+        $scope.removeName = function(name) {
+          var i = $scope.names.indexOf(name);
+          $scope.names.splice(i, 1);
+        };
+
+        $scope.removeNickName = function(nickname) {
+          var j = $scope.nicknames.indexOf(nickname);
+          $scope.nicknames.splice(j, 1);
+        };
+
+      });
+      nameApp.controller('CountryCtrl', function ($scope, $http){
+        $http.get('countries.json').success(function(data) {
+          $scope.countries = data;
+          $scope.sortField = 'population';
+          $scope.reverse = true;
+
+        });
+      });
+
+    </script>
+
+  </head>
+
+  <body  >
+<div style="float:left; padding:10px" ng-controller="NameCtrl">
+
+    <ul>
+      <li ng-repeat="name in names">{{name}}
+        <a href="" ng-click="removeName(name)">remove ul</a>
+      </li>
+    </ul>
+
+    <form ng-submit="addName1()">
+      <input type="text" ng-model="enteredName">
+      <input type="submit" value="add ul">
+    </form>
+
+
+</div>
+<div style="float:left;padding:10px " ng-controller="NameCtrl">
+    <ol>
+      <li ng-repeat="nickname in nicknames">{{nickname}}
+        <a href="" ng-click="removeNickName(nickname)">remove ol</a>
+      </li>
+    </ol>
+
+    <form ng-submit="addName2()">
+      <input type="text" ng-model="nick">
+      <input type="submit" value="add ol">
+    </form>
+
+</div>
+<div style="float:left;padding:10px " ng-controller="NameCtrl">
+    <ol>
+      <li ng-repeat="cntry in cntrys">country:{{cntry.c_name}} -> population:{{cntry.popul}}</li>
+    </ol>
+</div>
+
+<div style="float:left;padding:10px " ng-controller="CountryCtrl">
+  Search:<input ng-model="query" type="text"/>
+  <table border="1">
+   <tr>
+
+     <th><a href="" ng-click="sortField ='name';reverse= !reverse">Country</a></th>
+     <th><a href="" ng-click="sortField ='population';reverse=!reverse">population</a></th>
+
+   </tr>
+   <tr ng-repeat="country in countries | filter:query | orderBy:sortField:reverse">
+
+     <td>{{country.name}}</td>
+     <td>{{country.population}}</td>
+   </tr>
+ </table>
+</div>
+  </body>
+
+</html>

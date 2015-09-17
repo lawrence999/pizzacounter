@@ -1,0 +1,18 @@
+<div style="margin:0 auto;width:400px" ng-controller="PizzaCtrl">
+  Search:<input ng-model="query.name" type="text"/>
+  <table cellpadding="10">
+   <tr>
+
+     <th><a href="" ng-click="sortField ='name';reverse= !reverse">pizza</a></th>
+     <th>picture</a></th>
+     <th><a href="" ng-click="sortField ='rate';reverse= !reverse">rate</a></th>
+   </tr>
+   <tr ng-repeat="pizza in pizzas | filter:query | orderBy:sortField:reverse">
+
+     <td>{{pizza.name}}</td>
+     <td><img ng-src="{{pizza.image}}" width="50" height="50"></td>
+     <td>{{pizza.rate |currency:"₹":0}}</td>
+
+   </tr>
+ </table>
+</div>

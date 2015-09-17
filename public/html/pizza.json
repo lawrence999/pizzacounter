@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Margherita",
+        "image": "/images/marg.jpg",
+        "description": "A hugely popular margherita, with a deliciously tangy single cheese topping",
+        "rate": 450
+    },
+    {
+        "name": "Countryspecial",
+        "image": "/images/cs.jpg",
+        "description": "For all those with a partiality for veggies, this one's loaded - crunchy onions, crisp capsicum and fresh juicy tomatoes. Yum!",
+        "rate": 380
+    },
+    {
+        "name": "FarmHouse",
+        "image": "/images/fh.jpg",
+        "description": "A pizza that goes ballistic on veggies! Check out this mouth watering overload of crunchy, crisp capsicum, succulent mushrooms and fresh tomatoes",
+        "rate": 380
+    },
+    {
+        "name": "Mexicangreenwave",
+        "image": "/images/mg.jpg",
+        "description": "A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes and jalapeno with a liberal sprinkling of exotic Mexican herbs",
+        "rate": 480
+    },
+    {
+        "name": "VegExtraveganza",
+        "image": "/images/exotic.jpg",
+        "description": "A pizza that decidedly staggers under an overload of golden corn, exotic black olives, crunchy onions, crisp capsicum, succulent mushrooms, juicyfresh tomatoes and jalapeno - with extra cheese to go all around",
+        "rate": 500
+    }
+]
